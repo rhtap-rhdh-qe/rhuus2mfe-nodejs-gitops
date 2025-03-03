@@ -1,0 +1,18 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata: 
+  labels: 
+    app.kubernetes.io/instance: rhuus2mfe-nodejs
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: rhuus2mfe-nodejs 
+  name: rhuus2mfe-nodejs
+spec:
+  port:
+    targetPort: 3001 
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: rhuus2mfe-nodejs
+    weight: 100 
